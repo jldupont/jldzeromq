@@ -1,0 +1,59 @@
+#!/usr/bin/env python
+"""
+    Simple message publisher 
+
+    Command Line:
+    
+        jld0pub connect_to topic message
+
+        where 'connect_to' is a socket address e.g. tcp://localhost:5555
+
+    Example:
+    
+        jld0pub tcp://*:9002/ test2 allo4
+
+    @author: Jean-Lou Dupont
+"""
+import os, sys, argparse
+op=os.path
+
+try:
+    import jldzeromq
+except:
+    ### must be in dev mode then    
+    this_dir=op.dirname(__file__)
+    lib_path=op.abspath(op.join(this_dir, ".."))
+    sys.path.insert(0, lib_path)
+    import jldzeromq
+
+########################################################################
+
+DESC="Monitors PUB/SUB topics"
+DEFAULTS={
+          }
+
+def main():
+    try:
+        import jldzeromq.do_setup
+        import logging
+        import jldzeromq.do_checks
+        
+        parser=argparse.ArgumentParser(description=DESC)
+        parser.add_argument('connect_to',  type=str, help="Address for socket")        
+        parser.add_argument('topic',       type=str, help="Topic to publish to")
+        parser.add_argument('msg',         type=str, help="Message to send")
+        args=parser.parse_args()
+        
+        from jldzeromq.script_pub import run
+        run(args)
+
+    except KeyboardInterrupt:
+        logging.info("..Exiting")
+        sys.exit(0)##no probs
+        
+    except Exception,e:
+        logging.error(str(e))
+        sys.exit(1)
+        
+
+sys.exit(main())
