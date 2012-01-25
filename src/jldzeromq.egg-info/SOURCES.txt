@@ -10,3 +10,5 @@ src/jldzeromq.egg-info/dependency_links.txt
 src/jldzeromq.egg-info/not-zip-safe
 src/jldzeromq.egg-info/top_level.txt
 src/scripts/
+src/scripts/jld0pub
+src/scripts/jld0sub

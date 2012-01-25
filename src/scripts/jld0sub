@@ -30,7 +30,7 @@ except:
 
 ########################################################################
 
-DESC="Monitors PUB/SUB topics"
+DESC="SUBcribe to topic(s)"
 DEFAULTS={
           }
 

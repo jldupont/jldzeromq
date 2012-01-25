@@ -28,7 +28,7 @@ except:
 
 ########################################################################
 
-DESC="Monitors PUB/SUB topics"
+DESC="PUBlish to topic"
 DEFAULTS={
           }
 
