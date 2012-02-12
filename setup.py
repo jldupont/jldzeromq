@@ -6,7 +6,19 @@
     @author: jldupont
 """
 __author__  ="Jean-Lou Dupont"
-__version__ ="0.1.0"
+__version__ ="0.2.0"
+
+DESC="""
+Overview
+--------
+
+Collection of 0mq related scripts
+
+* jld0sub: subscribe to topics, output to stdout w/wo JSON
+* jld0pub: publish to a topic, input from stdin w/wo JSON
+* jld0fabric: fabric to publish/subscribe pattern
+
+"""
 
 
 from distutils.core import setup
@@ -22,11 +34,11 @@ setup(name=         'jldzeromq',
       package_dir=  {'': "src",},
       packages=     find_packages("src"),
       scripts=      ['src/scripts/jld0sub',
-                     'src/scripts/jld0pub',  
+                     'src/scripts/jld0pub',
+                     'src/scripts/jld0fabric',  
                      ],
-      package_data = {
-                      '':[ "*.gif", "*.png", "*.jpg" ],
-                      },
-      include_package_data=True,                      
       zip_safe=False
+      ,long_description=DESC
+      ,install_requires=[ "pyzmq",
+                         ]
       )

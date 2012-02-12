@@ -1,19 +1,7 @@
 #!/usr/bin/env python
 """
-    Monitors topics of PUB/SUB communication 
-
-    Command Line:
+    Simple Publish/Subscribe fabric
     
-        jld0sub connect_to topic [topic ...]
-
-        where 'connect_to' is a socket address e.g. tcp://localhost:5555
-
-
-    Example:
-    
-        jld0sub tcp://127.0.0.1:9002 test test1 test2
-        
-
     @author: Jean-Lou Dupont
 """
 import os, sys, argparse
@@ -30,7 +18,7 @@ except:
 
 ########################################################################
 
-DESC="SUBcribe to topic(s)"
+DESC="PUB/SUB fabric"
 DEFAULTS={
           }
 
@@ -41,12 +29,13 @@ def main():
         import jldzeromq.do_checks
         
         parser=argparse.ArgumentParser(description=DESC, fromfile_prefix_chars='@')
-        parser.add_argument('-ss', dest='sock_source',  type=str,  help="Address for socket", required=True)        
-        parser.add_argument('-tp', dest='topics',       type=str, nargs='+', help="Topic(s) to subscribe to", default="")
+        parser.add_argument('-ps', dest='sock_sub',  type=str, help="Subscribe side socket", required=True)        
+        parser.add_argument('-ss', dest='sock_pub',  type=str, help="Publish side socket", required=True)
+        
         args=parser.parse_args()
         
         from jldzeromq.tools_sys import dnorm
-        from jldzeromq.script_sub import run
+        from jldzeromq.script_fabric import run
         run(**dnorm(vars(args)))
 
     except KeyboardInterrupt:

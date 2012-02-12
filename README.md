@@ -4,4 +4,9 @@ For more information, visit http://www.systemical.com/doc/opensource/jldzeromq
 History
 =======
 
-0.1.0: initial release with 'jld0sub' and 'jld0pub' scripts
+0.2.0 :
+
+* added configuration file option to all scripts
+* added 'jld0fabric'
+
+0.1.0 : initial release with 'jld0sub' and 'jld0pub' scripts
