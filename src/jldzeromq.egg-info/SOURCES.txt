@@ -2,13 +2,17 @@ setup.py
 src/jldzeromq/__init__.py
 src/jldzeromq/do_checks.py
 src/jldzeromq/do_setup.py
+src/jldzeromq/script_fabric.py
 src/jldzeromq/script_pub.py
 src/jldzeromq/script_sub.py
+src/jldzeromq/tools_sys.py
 src/jldzeromq.egg-info/PKG-INFO
 src/jldzeromq.egg-info/SOURCES.txt
 src/jldzeromq.egg-info/dependency_links.txt
 src/jldzeromq.egg-info/not-zip-safe
+src/jldzeromq.egg-info/requires.txt
 src/jldzeromq.egg-info/top_level.txt
 src/scripts/
+src/scripts/jld0fabric
 src/scripts/jld0pub
 src/scripts/jld0sub

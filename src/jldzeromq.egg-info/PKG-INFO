@@ -1,10 +1,20 @@
 Metadata-Version: 1.0
 Name: jldzeromq
-Version: 0.1.0
+Version: 0.2.0
 Summary: Collection of ZeroMQ related tools
 Home-page: http://www.systemical.com/doc/opensource/jldzeromq
 Author: Jean-Lou Dupont
 Author-email: jl@jldupont.com
 License: UNKNOWN
-Description: UNKNOWN
+Description: 
+        Overview
+        --------
+        
+        Collection of 0mq related scripts
+        
+        * jld0sub: subscribe to topics, output to stdout w/wo JSON
+        * jld0pub: publish to a topic, input from stdin w/wo JSON
+        * jld0fabric: fabric to publish/subscribe pattern
+        
+        
 Platform: UNKNOWN
