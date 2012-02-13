@@ -8,7 +8,7 @@ from time import sleep
 
 sys.stdout = os.fdopen(sys.stdout.fileno(), 'w', 0)
 
-def run(sock_pub=None):
+def run(sock_pub=None, topic=None):
 
     try:
         ctx = zmq.Context()
@@ -25,13 +25,15 @@ def run(sock_pub=None):
         
         iline=sys.stdin.readline()
 
-        try:
-            topic, sep, msg=iline.partition(":")
-            assert(sep==":")
-            assert(len(topic)>0)
-        except:
-            logging.warning("Invalid format, expecting:  'topic: msg'")
-            continue
+        msg=iline
+        if topic is None:
+            try:
+                topic, sep, msg=iline.partition(":")
+                assert(sep==":")
+                assert(len(topic)>0)
+            except:
+                logging.warning("Invalid format, expecting:  'topic: msg'")
+                continue
     
         try:
             s.send_multipart([topic, msg])

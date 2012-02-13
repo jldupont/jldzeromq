@@ -29,7 +29,8 @@ def main():
         import jldzeromq.do_checks
         
         parser=argparse.ArgumentParser(description=DESC, fromfile_prefix_chars='@')
-        parser.add_argument('-sp', dest='sock_pub',  type=str, help="Address for socket", required=True)        
+        parser.add_argument('-sp', dest='sock_pub',  type=str, help="Address for socket", required=True)
+        parser.add_argument('-tp', dest='topic',     type=str, help="Specify topic", default=None)       
         args=parser.parse_args()
         
         from jldzeromq.tools_sys import dnorm

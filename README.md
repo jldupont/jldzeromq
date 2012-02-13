@@ -4,6 +4,10 @@ For more information, visit http://www.systemical.com/doc/opensource/jldzeromq
 History
 =======
 
+0.2.1 :
+
+* added '-tp' to jld0pub (ability to force topic)
+
 0.2.0 :
 
 * added configuration file option to all scripts
