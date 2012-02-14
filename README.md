@@ -4,7 +4,7 @@ For more information, visit http://www.systemical.com/doc/opensource/jldzeromq
 History
 =======
 
-0.2.1 :
+0.2.2 :
 
 * added '-tp' & json support to jld0pub (ability to force topic)
 
