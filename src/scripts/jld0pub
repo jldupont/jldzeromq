@@ -30,7 +30,12 @@ def main():
         
         parser=argparse.ArgumentParser(description=DESC, fromfile_prefix_chars='@')
         parser.add_argument('-sp', dest='sock_pub',  type=str, help="Address for socket", required=True)
-        parser.add_argument('-tp', dest='topic',     type=str, help="Specify topic", default=None)       
+        parser.add_argument('-tp', dest='topic',     type=str, help="Specify topic", default=None)  
+             
+        parser.add_argument('-js', dest='json_mode', action="store_true", help="JSON mode", default=False)
+        
+        parser.add_argument('-tf', dest='filter_topics', type=str, nargs='+', help="Topic(s) to filter out", default=[])
+        
         args=parser.parse_args()
         
         from jldzeromq.tools_sys import dnorm

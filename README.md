@@ -6,7 +6,7 @@ History
 
 0.2.1 :
 
-* added '-tp' to jld0pub (ability to force topic)
+* added '-tp' & json support to jld0pub (ability to force topic)
 
 0.2.0 :
 

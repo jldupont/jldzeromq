@@ -3,9 +3,7 @@
     @author: jldupont
 """
 import zmq
-import logging, sys,os
-
-sys.stdout = os.fdopen(sys.stdout.fileno(), 'w', 0)
+import logging, sys
 
 def run(sock_source=None, topics=None):
 
