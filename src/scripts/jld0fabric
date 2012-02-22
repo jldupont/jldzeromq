@@ -29,8 +29,8 @@ def main():
         import jldzeromq.do_checks
         
         parser=argparse.ArgumentParser(description=DESC, fromfile_prefix_chars='@')
-        parser.add_argument('-ps', dest='sock_sub',  type=str, help="Subscribe side socket", required=True)        
-        parser.add_argument('-ss', dest='sock_pub',  type=str, help="Publish side socket", required=True)
+        parser.add_argument('-ss', dest='sock_sub',  type=str, help="Subscribe side socket", required=True)        
+        parser.add_argument('-ps', dest='sock_pub',  type=str, help="Publish side socket", required=True)
         
         args=parser.parse_args()
         
