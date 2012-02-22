@@ -35,7 +35,7 @@ def run(sock_source=None, topics=None):
         sys.stdout.write('%s: %s' % (topic, msg))
         
         ### protection against broken pipe
-        if os.getppid!=ppid:
+        if os.getppid()!=ppid:
             logging.warning("Parent process terminated... exiting")
             break
 

@@ -22,7 +22,7 @@ def run(sock_pub=None, topic=None, json_mode=None, filter_topics=[]):
     while True:
         
         ### protection against broken pipe
-        if os.getppid!=ppid:
+        if os.getppid()!=ppid:
             logging.warning("Parent process terminated... exiting")
             break
         
