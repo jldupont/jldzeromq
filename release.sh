@@ -1,13 +1,18 @@
 #!/bin/sh
 
-echo "Tagging & submitting to Pypi, version:" $1
+echo "Submitting egg to Pypi"
+python setup.py sdist --formats=zip,gztar upload
+
+VERSION=`cat latest`
+
+echo "Tagging & submitting to Pypi, version:" $VERSION
 GIT=`which git`
 
 $GIT add .
-$GIT commit -m $1
+$GIT commit -m $VERSION
 $GIT push origin master
 
-$GIT tag -a $1 -m "version $1"
+$GIT tag -a $VERSION -m "version $VERSION"
 $GIT push --tags
 
 echo "Submitting egg to Pypi"

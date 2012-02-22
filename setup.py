@@ -6,7 +6,7 @@
     @author: jldupont
 """
 __author__  ="Jean-Lou Dupont"
-__version__ ="0.2.3"
+__version__ ="0.2.4"
 
 DESC="""
 Overview
@@ -42,3 +42,10 @@ setup(name=         'jldzeromq',
       ,install_requires=[ "pyzmq",
                          ]
       )
+
+#############################################
+
+f=open("latest", "w")
+f.write(str(__version__)+"\n")
+f.close()
+

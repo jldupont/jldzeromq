@@ -16,8 +16,15 @@ def run(sock_pub=None, topic=None, json_mode=None, filter_topics=[]):
     except Exception:
         raise Exception("Can't connect a socket to address: %s" % sock_pub)
 
-    
+    ppid=os.getppid()
+    logging.info("Parent pid: %s" % ppid)
+    logging.info("Starting loop...")    
     while True:
+        
+        ### protection against broken pipe
+        if os.getppid!=ppid:
+            logging.warning("Parent process terminated... exiting")
+            break
         
         iline=sys.stdin.readline().strip()
         

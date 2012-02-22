@@ -4,6 +4,8 @@ For more information, visit http://www.systemical.com/doc/opensource/jldzeromq
 History
 =======
 
+0.2.4 : added protection against parent process termination & broken pipe situation
+
 0.2.3 :  corrected parameter inversion in 'jld0fabric'
 
 0.2.2 :
