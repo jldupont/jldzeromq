@@ -15,6 +15,3 @@ $GIT push origin master
 $GIT tag -a $VERSION -m "version $VERSION"
 $GIT push --tags
 
-echo "Submitting egg to Pypi"
-python setup.py sdist --formats=zip,gztar upload
-
