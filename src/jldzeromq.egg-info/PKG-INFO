@@ -1,6 +1,6 @@
 Metadata-Version: 1.0
 Name: jldzeromq
-Version: 0.2.7
+Version: 0.2.8
 Summary: Collection of ZeroMQ related tools
 Home-page: http://www.systemical.com/doc/opensource/jldzeromq
 Author: Jean-Lou Dupont
