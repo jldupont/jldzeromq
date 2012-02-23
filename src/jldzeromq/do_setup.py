@@ -4,13 +4,10 @@
 
 import logging, sys, os
 
-### alignment for program name
-ALIGN=15
-
 sys.stdout = os.fdopen(sys.stdout.fileno(), 'w', 0)
 
 name=os.path.basename(sys.argv[0])
-fname="%-"+str(ALIGN)+"s" % name
+fname="%-15s" % name
 
 FORMAT='%(asctime)s - '+fname+' - %(levelname)s - %(message)s'
 formatter = logging.Formatter(FORMAT)
