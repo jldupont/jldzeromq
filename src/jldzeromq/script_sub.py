@@ -28,7 +28,8 @@ def run(sock_source=None, topics=None, just_msg_mode=None):
         raise Exception("Error subscribing to topic '%s'" % topic)
     
     ppid=os.getppid()
-    logging.info("Parent pid: %s" % ppid)
+    logging.info("Process pid: %s" % os.getpid())
+    logging.info("Parent pid : %s" % ppid)
     logging.info("Starting loop...")
     while True:
         topic, msg = s.recv_multipart()

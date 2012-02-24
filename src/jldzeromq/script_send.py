@@ -53,8 +53,8 @@ def run(sock_fabric=None, specified_topic=None, json_mode=None, filter_topics=[]
 
     ppid=os.getppid()
     logging.info("Process pid: %s" % os.getpid())
-    logging.info("Parent pid: %s" % ppid)
-    logging.info("Starting loop...")    
+    logging.info("Parent pid : %s" % ppid)
+    logging.info("Starting loop...")
     while True:
         
         ### protection against broken pipe

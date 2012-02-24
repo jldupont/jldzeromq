@@ -41,9 +41,7 @@ def main():
         from jldzeromq.script_send import run
         
         args=dnorm(vars(args))
-        
         info_dump(args, 20)
-        
         run(**args)
 
     except KeyboardInterrupt:

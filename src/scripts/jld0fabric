@@ -34,9 +34,13 @@ def main():
         
         args=parser.parse_args()
         
-        from jldzeromq.tools_sys import dnorm
+        from jldzeromq.tools_sys import dnorm, info_dump
         from jldzeromq.script_fabric import run
-        run(**dnorm(vars(args)))
+        
+        args=dnorm(vars(args))
+        info_dump(args, 20)       
+        run(**args)
+
 
     except KeyboardInterrupt:
         logging.info("..Exiting")

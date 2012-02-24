@@ -27,8 +27,8 @@ def run(sock_pub=None, sock_sub=None):
     
     ppid=os.getppid()
     logging.info("Process pid: %s" % os.getpid())
-    logging.info("Parent pid: %s" % ppid)
-    logging.info("Starting loop...")        
+    logging.info("Parent pid : %s" % ppid)
+    logging.info("Starting loop...")
     while True:
         
         _, topic, msg = sp.recv_multipart()

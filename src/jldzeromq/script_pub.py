@@ -51,8 +51,9 @@ def run(sock_pub=None, specified_topic=None, json_mode=None, filter_topics=[]):
         raise Exception("Can't use socket '%s' for publishing" % sock_pub)
 
     ppid=os.getppid()
-    logging.info("Parent pid: %s" % ppid)
-    logging.info("Starting loop...")    
+    logging.info("Process pid: %s" % os.getpid())
+    logging.info("Parent pid : %s" % ppid)
+    logging.info("Starting loop...")
     while True:
         
         ### protection against broken pipe
