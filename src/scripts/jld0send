@@ -1,18 +1,6 @@
-#!/usr/bin/env python
+#!/usr/bin/python
 """
-    Monitors topics of PUB/SUB communication 
-
-    Command Line:
-    
-        jld0sub connect_to topic [topic ...]
-
-        where 'connect_to' is a socket address e.g. tcp://localhost:5555
-
-
-    Example:
-    
-        jld0sub tcp://127.0.0.1:9002 test test1 test2
-        
+    Send message to specific fabric 
 
     @author: Jean-Lou Dupont
 """
@@ -30,7 +18,7 @@ except:
 
 ########################################################################
 
-DESC="SUBcribe to topic(s)"
+DESC="Send to fabric"
 DEFAULTS={
           }
 
@@ -41,14 +29,22 @@ def main():
         import jldzeromq.do_checks
         
         parser=argparse.ArgumentParser(description=DESC, fromfile_prefix_chars='@')
-        parser.add_argument('-jmm', dest='just_msg_mode',  action="store_true",  help="JSON mode", default=False)
-        parser.add_argument('-ss',  dest='sock_source',  type=str,  help="Address for socket", required=True)        
-        parser.add_argument('-tp',  dest='topics',       type=str, nargs='+', help="Topic(s) to subscribe to", default="")
+        
+        parser.add_argument('-sf', dest='sock_fabric',  type=str, help="Fabric socket address", required=True)
+        parser.add_argument('-tp', dest='specified_topic',     type=str, help="Specify topic", default=None)  
+        parser.add_argument('-js', dest='json_mode', action="store_true", help="JSON mode", default=False)
+        parser.add_argument('-tf', dest='filter_topics', type=str, nargs='+', help="Topic(s) to filter out", default=[])
+        
         args=parser.parse_args()
         
-        from jldzeromq.tools_sys import dnorm
-        from jldzeromq.script_sub import run
-        run(**dnorm(vars(args)))
+        from jldzeromq.tools_sys import dnorm, info_dump
+        from jldzeromq.script_send import run
+        
+        args=dnorm(vars(args))
+        
+        info_dump(args, 20)
+        
+        run(**args)
 
     except KeyboardInterrupt:
         logging.info("..Exiting")

@@ -40,17 +40,19 @@ def extract(json_mode, specified_topic, iline):
     
     
 
-def run(sock_pub=None, specified_topic=None, json_mode=None, filter_topics=[]):
+def run(sock_fabric=None, specified_topic=None, json_mode=None, filter_topics=[]):
 
+    ctx = zmq.Context()
+    
     try:
-        ctx = zmq.Context()
-        s = ctx.socket(zmq.PUB)
-        s.bind(sock_pub)
-        logging.info("Ready to publish with socket: %s" % sock_pub)
+        s = ctx.socket(zmq.DEALER)
+        s.connect(sock_fabric)
+        logging.info("Connected to fabric with socket: %s" % sock_fabric)
     except Exception:
-        raise Exception("Can't use socket '%s' for publishing" % sock_pub)
+        raise Exception("Can't connect to fabric: %s" % sock_fabric)
 
     ppid=os.getppid()
+    logging.info("Process pid: %s" % os.getpid())
     logging.info("Parent pid: %s" % ppid)
     logging.info("Starting loop...")    
     while True:

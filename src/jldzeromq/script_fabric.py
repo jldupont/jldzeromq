@@ -3,31 +3,33 @@
     @author: jldupont
 """
 import zmq
-import logging
+import logging, os
 
 
 def run(sock_pub=None, sock_sub=None):
 
     try:
         ctx = zmq.Context()
-        ss = ctx.socket(zmq.SUB)
-        ss.connect(sock_sub)
-        ss.setsockopt(zmq.SUBSCRIBE, "")
-        logging.info("Connected to SUB socket: %s" % sock_sub)
-    except Exception:
-        raise Exception("Can't connect SUB socket to address: %s" % sock_sub)
+        sp = ctx.socket(zmq.ROUTER)
+        sp.bind(sock_pub)
+        logging.info("Ready to receive for publishers on socket: %s" % sock_pub)
+    except Exception,e:
+        raise Exception("Can't bind to socket for publishers: %s => %s" % (sock_pub, str(e)))
     
     try:
         ctx = zmq.Context()
-        sp = ctx.socket(zmq.PUB)
-        sp.bind(sock_pub)
-        logging.info("Connected to PUB socket: %s" % sock_pub)        
+        ss = ctx.socket(zmq.PUB)
+        ss.bind(sock_sub)
+        logging.info("Ready for subscribers on socket: %s" % sock_sub)        
     except Exception:
-        raise Exception("Can't connect a socket to address: %s" % sock_pub)
+        raise Exception("Can't use socket '%s' for subscribers" % sock_sub)
 
     
-    logging.info("Starting loop...")
+    ppid=os.getppid()
+    logging.info("Process pid: %s" % os.getpid())
+    logging.info("Parent pid: %s" % ppid)
+    logging.info("Starting loop...")        
     while True:
         
-        topic, msg = ss.recv_multipart()    
-        sp.send_multipart([topic, msg])
+        _, topic, msg = sp.recv_multipart()
+        ss.send_multipart([topic, msg])

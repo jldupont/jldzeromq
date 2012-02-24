@@ -6,7 +6,7 @@ import os
 import zmq
 import logging, sys
 
-def run(sock_source=None, topics=None):
+def run(sock_source=None, topics=None, just_msg_mode=None):
 
     try:
         ctx = zmq.Context()
@@ -32,7 +32,11 @@ def run(sock_source=None, topics=None):
     logging.info("Starting loop...")
     while True:
         topic, msg = s.recv_multipart()
-        sys.stdout.write('%s: %s' % (topic, msg))
+        
+        if just_msg_mode:
+            sys.stdout.write(msg+"\n")
+        else:
+            sys.stdout.write('%s: %s\n' % (topic, msg))
         
         ### protection against broken pipe
         if os.getppid()!=ppid:

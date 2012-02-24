@@ -6,7 +6,7 @@
     @author: jldupont
 """
 __author__  ="Jean-Lou Dupont"
-__version__ ="0.2.11"
+__version__ ="0.3.0"
 
 DESC="""
 Overview
@@ -17,7 +17,7 @@ Collection of 0mq related scripts
 * jld0sub: subscribe to topics, output to stdout w/wo JSON
 * jld0pub: publish to a topic, input from stdin w/wo JSON
 * jld0fabric: fabric to publish/subscribe pattern
-
+* jld0send : send message to fabric for all the subscribers
 """
 
 
@@ -36,6 +36,7 @@ setup(name=         'jldzeromq',
       scripts=      ['src/scripts/jld0sub',
                      'src/scripts/jld0pub',
                      'src/scripts/jld0fabric',  
+                     'src/scripts/jld0send',
                      ],
       zip_safe=False
       ,long_description=DESC
