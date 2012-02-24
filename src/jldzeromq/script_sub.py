@@ -6,7 +6,9 @@ import os
 import zmq
 import logging, sys
 
-def run(sock_source=None, topics=None, just_msg_mode=None):
+def run(sock_source=None, topics=None, 
+        topics_filter=None,
+        just_msg_mode=None):
 
     try:
         ctx = zmq.Context()
@@ -18,6 +20,9 @@ def run(sock_source=None, topics=None, just_msg_mode=None):
     if topics is None or topics=="":
         logging.info("* Snooping mode engaged")
         topics=["",]
+    
+    if topics_filter is None or topics_filter=="":
+        topics_filter=["",]
     
     try:
         for topic in topics:
@@ -32,7 +37,15 @@ def run(sock_source=None, topics=None, just_msg_mode=None):
     logging.info("Parent pid : %s" % ppid)
     logging.info("Starting loop...")
     while True:
+        
+        if ppid!=os.getppid():
+            logging.warning("Parent terminated... exiting")
+            break
+        
         topic, msg = s.recv_multipart()
+        
+        if topic in topics_filter:
+            continue
         
         if just_msg_mode:
             sys.stdout.write(msg+"\n")
