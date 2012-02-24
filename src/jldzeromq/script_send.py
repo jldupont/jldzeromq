@@ -79,5 +79,11 @@ def run(sock_fabric=None, specified_topic=None, json_mode=None, filter_topics=[]
             s.send_multipart([topic, msg])
         except Exception,e:
             logging.warning("Error sending on topic '%s': %s -- %s" % (topic, msg, str(e)))
+            
+        try:
+            sys.stdout.write("%s: %s\n" % (topic, msg))
+        except:
+            pass
+
         
     
