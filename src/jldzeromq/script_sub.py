@@ -69,13 +69,14 @@ def run(sock_source=None, topics=None,
             except Exception,e:
                 raise Exception("Specified callable function caused an error: %s" % str(e))
         
-        try:
-            if just_msg_mode:
-                sys.stdout.write(msg+"\n")
-            else:
-                sys.stdout.write('%s: %s\n' % (topic, msg))
-        except:
-            raise Exception("Exiting (probably broken pipe on stdout)...")
+        if topic is not None:
+            try:
+                if just_msg_mode:
+                    sys.stdout.write(msg+"\n")
+                else:
+                    sys.stdout.write('%s: %s\n' % (topic, msg))
+            except:
+                raise Exception("Exiting (probably broken pipe on stdout)...")
         
         ### protection against broken pipe
         if os.getppid()!=ppid:
