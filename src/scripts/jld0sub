@@ -48,7 +48,7 @@ def main():
         
         parser.add_argument('-m',   dest='module',        type=str,  help="Python module name", default=None)
         parser.add_argument('-f',   dest='function',      type=str,  help="Python function name inside module", default=None)
-        parser.add_argument('-a',   dest='fargs',         type=str,  help="Python function name inside module", default=None, nargs="+")
+        parser.add_argument('-a',   dest='fargs',         type=str,  help="Python function name inside module", default=[], nargs="+")
         
         args=parser.parse_args()
         
