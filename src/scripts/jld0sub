@@ -46,6 +46,10 @@ def main():
         parser.add_argument('-tp',  dest='topics',        type=str, nargs='+', help="Topic(s) to subscribe to", default="")
         parser.add_argument('-tpf', dest='topics_filter', type=str, nargs='+', help="Topic(s) to filter out", default="")
         
+        parser.add_argument('-m',   dest='module',        type=str,  help="Python module name", default=None)
+        parser.add_argument('-f',   dest='function',      type=str,  help="Python function name inside module", default=None)
+        parser.add_argument('-a',   dest='fargs',         type=str,  help="Python function name inside module", default=None, nargs="+")
+        
         args=parser.parse_args()
         
         from jldzeromq.tools_sys import dnorm, info_dump
