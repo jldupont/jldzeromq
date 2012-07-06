@@ -60,6 +60,7 @@ def run(sock_source=None, topics=None,
         
         topic, msg = s.recv_multipart()
         
+        ### filter-out
         if topic in topics_filter:
             continue
         

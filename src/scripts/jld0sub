@@ -16,6 +16,7 @@
 
     @author: Jean-Lou Dupont
 """
+__version__="0.1"
 import os, sys, argparse
 op=os.path
 
@@ -30,7 +31,7 @@ except:
 
 ########################################################################
 
-DESC="SUBcribe to topic(s)"
+DESC="SUBcribe to topic(s) - version %s" % __version__
 DEFAULTS={
           }
 

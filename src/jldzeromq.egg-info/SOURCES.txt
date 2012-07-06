@@ -15,6 +15,7 @@ src/jldzeromq.egg-info/requires.txt
 src/jldzeromq.egg-info/top_level.txt
 src/scripts/
 src/scripts/jld0fabric
+src/scripts/jld0fabric_default
 src/scripts/jld0pub
 src/scripts/jld0send
 src/scripts/jld0sub

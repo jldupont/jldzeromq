@@ -1,0 +1,11 @@
+#!/bin/bash
+#
+#  Default Message Fabric
+#
+#  Jean-Lou Dupont
+#
+
+SUBSCRIBER_SIDE_SOCKET=tcp://*:9003
+PUBLISHER_SIDE_SOCKET=tcp://127.0.0.1:9002
+
+$BIN/jld0fabric -ss $SUBSCRIBER_SIDE_SOCKET -ps $PUBLISHER_SIDE_SOCKET
