@@ -21,13 +21,13 @@ import os, sys, argparse
 op=os.path
 
 try:
-    import jldzeromq
+    import jldzeromq  #@UnusedImport
 except:
     ### must be in dev mode then    
     this_dir=op.dirname(__file__)
     lib_path=op.abspath(op.join(this_dir, ".."))
     sys.path.insert(0, lib_path)
-    import jldzeromq
+    import jldzeromq #@UnusedImport
 
 ########################################################################
 
@@ -37,9 +37,9 @@ DEFAULTS={
 
 def main():
     try:
-        import jldzeromq.do_setup
+        import jldzeromq.do_setup #@UnusedImport
         import logging
-        import jldzeromq.do_checks
+        import jldzeromq.do_checks #@UnusedImport
         
         parser=argparse.ArgumentParser(description=DESC, fromfile_prefix_chars='@')
         parser.add_argument('-jmm', dest='just_msg_mode', action="store_true",  help="'Just the message' mode", default=False)
@@ -49,7 +49,7 @@ def main():
         
         parser.add_argument('-m',   dest='module',        type=str,  help="Python module name", default=None)
         parser.add_argument('-f',   dest='function',      type=str,  help="Python function name inside module", default=None)
-        parser.add_argument('-a',   dest='fargs',         type=str,  help="Python function name inside module", default=[], nargs="+")
+        parser.add_argument('-a',   dest='fargs',         type=str,  help="Python arguments list to function", default=[], nargs="+")
         
         args=parser.parse_args()
         
@@ -62,7 +62,7 @@ def main():
 
 
     except KeyboardInterrupt:
-        logging.info("..Exiting")
+        logging.info("...exiting")
         sys.exit(0)##no probs
         
     except Exception,e:
